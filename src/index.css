@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .primary-btn {
+    @apply inline-block bg-[#1A1A1A] text-white font-semibold rounded-lg hover:bg-[#FCDC55] duration-200 shadow-[0px_10px_8px_-7px_#ef4444] hover:shadow-[0px_10px_8px_-7px_#ef4444] py-2 px-6;
+  }
+}
+
+.custom-drawer .ant-drawer-body {
+  background-color: #1A1A1A;
+}
+
+
+@layer utilities {
+  .drop-shadow {
+    filter: drop-shadow(6px 8px 10px rgba(0, 0, 0, 0.5));
+  }
+}
