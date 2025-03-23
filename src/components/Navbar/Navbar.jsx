@@ -9,29 +9,29 @@ const NavbarLeft = [
   {
     id: 1,
     title: "Air X",
-    path: "/airx",
+    path: "#airx",
   },
   {
     id: 2,
     title: "Lexo Z",
-    path: "/lexoz",
+    path: "#lexoz",
   },
   {
     id: 3,
     title: "Gravity 9",
-    path: "/gravity9",
+    path: "/",
   }
 ];
 const NavbarRight = [
   {
     id: 1,
     title: "Shop",
-    path: "/shop",
+    path: "/",
   },
   {
     id: 2,
     title: "Account",
-    path: "/account",
+    path: "/",
   },
 ];
 
@@ -65,8 +65,20 @@ const Navbar = () => {
         {/* Menu section */}
         <div className="hidden lg:block">
           <ul className="flex items-center gap-3">
-            {NavbarLeft.map((menu) => (
-              <li key={menu.id}>
+          {NavbarLeft.map((menu) => (
+            <li key={menu.id}>
+              {menu.title === "Lexo Z" || menu.title === "Air X" ? (
+                <button
+                  onClick={() => {
+                    const section = menu.title.toLowerCase().replace(/\s+/g, '');
+                    window.dispatchEvent(new CustomEvent("scrollToSection", { detail: section }));
+                  }}
+                  className="inline-block text-base font-normal px-3 text-[#FFFFFF] hover:text-[#FCDC55] relative group"
+                >
+                  <div className="w-9/12 h-[2px] bg-[#FCDC55] absolute mt-4 left-1/2 -translate-x-1/2 top-1/2 bottom-0 group-hover:block hidden"></div>
+                  {menu.title}
+                </button>
+              ) : (
                 <NavLink
                   to={menu.path}
                   className="inline-block text-base font-normal px-3 text-[#FFFFFF] hover:text-[#FCDC55] relative group"
@@ -74,8 +86,9 @@ const Navbar = () => {
                   <div className="w-9/12 h-[2px] bg-[#FCDC55] absolute mt-4 left-1/2 -translate-x-1/2 top-1/2 bottom-0 group-hover:block hidden"></div>
                   {menu.title}
                 </NavLink>
-              </li>
-            ))}
+              )}
+            </li>
+          ))}
           </ul>
         </div>
 
